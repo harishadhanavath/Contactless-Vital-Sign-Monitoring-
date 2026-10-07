@@ -1,0 +1,119 @@
+PROJECT NAME: Contactless Vital Sign Monitoring System using rPPG
+
+One-line pitch:
+A webcam-based AI healthcare system that estimates heart rate and breathing rate without physical sensors using computer vision and signal processing.
+
+---
+
+PROBLEM STATEMENT:
+Traditional health monitoring systems rely on wearable sensors or medical devices such as ECG and pulse oximeters, which require physical contact and may not always be accessible or comfortable. There is a growing need for low-cost, contactless, and easily accessible healthcare monitoring solutions.
+This project addresses that problem by using a webcam and rPPG (remote photoplethysmography) to estimate vital signs through facial video analysis.
+
+---
+
+TECH STACK:
+
+* Frontend/UI: Streamlit
+* Backend: Python
+* Computer Vision: OpenCV
+* Signal Processing: NumPy + SciPy
+* Visualization: Matplotlib
+* Data Handling: Pandas (CSV storage)
+* Deployment: GitHub + Streamlit Cloud
+
+---
+
+ARCHITECTURE (text diagram):
+
+User
+↓
+Webcam Input
+↓
+Face Detection (OpenCV)
+↓
+ROI Extraction (Forehead Region)
+↓
+rPPG Signal Extraction
+↓
+Filtering + FFT Processing
+↓
+Heart Rate & Respiration Estimation
+↓
+Dashboard Output + History Storage
+
+---
+
+KEY FEATURES:
+
+1. Contactless Vital Monitoring
+   Built a webcam-based system that estimates heart rate and respiration rate without requiring any physical sensors or wearable devices.
+
+2. Real-Time Signal Processing
+   Implemented rPPG signal extraction using facial color variations and applied FFT-based frequency analysis for BPM calculation.
+   Challenge faced: Motion and lighting noise affecting signal quality.
+
+3. Interactive Healthcare Dashboard
+   Designed a multi-page Streamlit dashboard with login, user profile, live camera preview, results visualization, and history tracking.
+
+---
+
+ALGORITHMS / MODELS USED:
+
+* rPPG (remote Photoplethysmography) for pulse estimation
+* FFT (Fast Fourier Transform) for frequency-domain analysis
+* Bandpass Filtering for noise reduction
+* OpenCV Haar Cascade / Face Detection
+* Green Channel Signal Extraction
+
+---
+
+CHALLENGES FACED + HOW SOLVED:
+
+* Challenge: Signal noise due to face movement and lighting variations
+
+* Solution: Applied filtering techniques and selected stable ROI (forehead region)
+
+* Challenge: Webcam integration in deployed environment
+
+* Solution: Demonstrated real-time processing locally and deployed UI/workflow online using Streamlit Cloud
+
+* Challenge: Slow signal stabilization
+
+* Solution: Reduced processing window and optimized buffer handling for faster estimation
+
+---
+
+METRICS / RESULTS:
+
+* Heart Rate Accuracy: ~90–93%
+* Average Error: ±2 BPM
+* Face Detection Accuracy: ~95%
+* Deployment: Yes — Streamlit Cloud
+* GitHub Repository: Available
+* Testing: Performed under normal lighting conditions
+
+---
+
+WHAT I’D IMPROVE:
+
+* Add Deep Learning-based rPPG models for improved accuracy
+* Integrate SpO₂ and blood pressure estimation
+* Add cloud database and doctor dashboard
+* Develop Android/iOS mobile application
+* Improve robustness against motion artifacts and low lighting
+
+---
+
+INTERVIEW PREP QUESTIONS (Self-Test):
+
+Q: Why use the green channel for rPPG?
+A: Hemoglobin absorbs green light strongly, making pulse-related variations more visible and stable compared to red or blue channels.
+
+Q: Why FFT for BPM calculation?
+A: FFT converts the time-domain signal into frequency-domain and helps identify the dominant heartbeat frequency accurately.
+
+Q: What are the limitations of your system?
+A: Accuracy can reduce due to lighting variation, head movement, and webcam quality.
+
+Q: Can this replace medical devices?
+A: No, this is a prototype for approximate contactless monitoring and not a replacement for clinical-grade equipment.
